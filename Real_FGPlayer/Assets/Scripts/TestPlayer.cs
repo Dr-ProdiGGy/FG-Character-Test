@@ -4,38 +4,57 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class TestPlayer : MonoBehaviour
 {
-    FGController controller;
+    private FGController controller;
     [SerializeField] CharacterSO charStats;
+    private GameObject player;
     Rigidbody rb;
 
     Vector2 input;
-
-    private bool isDashingAllowed;
     private int inputCounter;
+    private int[] inputBuffer;
+
+    private InputStates inputStates;
+    
+    private enum InputStates
+    {
+        NEUTRAL = 5,
+        FORWARD = 6,
+        BACK = 4,
+        DOWN = 2,
+        UP = 8,
+        DF = 3,
+        DB = 1,
+        UF = 9,
+        UB = 7,
+        PUNCH,
+        KICK,
+        SLASH,
+        HS
+    }
 
     private void Awake()
     {
-        
-
-        controller.FGControls.Walk.performed += ctx => PlayerMove();
-        controller.FGControls.Walk.canceled += ctx => isDashingAllowed = false;
-        //controller.FGControls.Move.performed += ctx => InputCheck();
-
+        controller = new FGController();
+        controller.FGControls.Enable();
+        rb = GetComponent<Rigidbody>();
+        player = GameObject.FindWithTag("Player");
     }
 
-    // Start is called before the first frame update
+
     void Start()
     {
-       AllowAirDash();
+
+        AllowAirDash();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    void FixedUpdate()
     {
-        
+        PlayerMove();
+        InputCheck();
     }
 
     private void OnEnable()
@@ -43,10 +62,7 @@ public class TestPlayer : MonoBehaviour
         controller.FGControls.Enable();
     }
 
-    private void OnDisable()
-    {
-        controller.FGControls.Disable();
-    }
+
     private void AllowAirDash()
     {
         if(charStats.p_Name == "Potemkin" && charStats.p_Name == "Justice")
@@ -57,16 +73,45 @@ public class TestPlayer : MonoBehaviour
 
     private void PlayerMove()
     {
-        if(!isDashingAllowed)
-        {
-            rb.velocity = charStats.p_WalkSpeed * controller.FGControls.Walk.ReadValue<Vector2>();
-            isDashingAllowed = true;
-        }
+        rb.velocity = charStats.p_WalkSpeed * controller.FGControls.Walk.ReadValue<Vector2>();
     }
 
-    private Vector2 InputCheck()
+    private void PlayerJump()
     {
 
-        return new Vector2(0,1);
     }
+
+    private InputStates InputCheck()
+    {
+        switch(controller.FGControls.Check.ReadValue<Vector2>()) 
+        {
+            case Vector2 v when v.Equals(new Vector2(0, 0)):
+                inputStates = InputStates.NEUTRAL;   
+                break;
+
+            case Vector2 v when v.Equals(new Vector2(1, 0)): 
+                inputStates = InputStates.FORWARD;
+                break;
+
+            case Vector2 v when v.Equals(new Vector2(-1, 0)):
+                inputStates = InputStates.BACK;
+                break;
+
+            case Vector2 v when v.Equals(new Vector2(0, 1)):
+                inputStates = InputStates.UP;
+                break;
+
+            case Vector2 v when v.Equals(new Vector2(0, -1)):
+                inputStates = InputStates.DOWN;
+                break;
+
+            case Vector2 v when v.Equals(new Vector2(1, 1)):
+                inputStates = InputStates.DF;
+                break;
+
+        }
+        Debug.Log(inputStates);
+        return inputStates;
+    }
+
 }

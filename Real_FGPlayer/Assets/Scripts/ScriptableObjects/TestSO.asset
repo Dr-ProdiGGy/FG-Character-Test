@@ -16,6 +16,6 @@ MonoBehaviour:
   charHP: 0
   charJumpAmount: 0
   charAirDashAmount: 0
-  charWalkSpeed: 0
+  charWalkSpeed: 4
   charRunSpeed: 0
   charWeight: 

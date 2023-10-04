@@ -12,7 +12,10 @@ public class CharacterSO : ScriptableObject
     [SerializeField] private int charAirDashAmount;
     [SerializeField] private float charWalkSpeed;
     [SerializeField] private float charRunSpeed;
+    [SerializeField] private float charRunAccel;
     [SerializeField] private string charWeight;
+    [SerializeField] private States charStates;
+
     
 
     private enum States 
@@ -37,7 +40,9 @@ public class CharacterSO : ScriptableObject
     public int p_AirDashAmount { get { return charAirDashAmount; }}
     public float p_WalkSpeed { get { return charWalkSpeed; }}
     public float p_RunSpeed { get { return charRunSpeed; }}
-    public string p_Weight { get {  return charWeight; }}
+    public float p_RunAccel { get { return charRunAccel; }}
+    public string p_Weight { get { return charWeight; }}
+    //public States p_States { get { return charStates; }}
     #endregion
 
 

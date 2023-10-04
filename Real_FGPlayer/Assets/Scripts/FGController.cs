@@ -25,31 +25,22 @@ public partial class @FGController: IInputActionCollection2, IDisposable
     ""maps"": [
         {
             ""name"": ""FGControls"",
-            ""id"": ""24ddb72f-c215-4de4-8078-23d56dddad08"",
+            ""id"": ""48bf6be0-8262-4484-b298-a1d506e43376"",
             ""actions"": [
                 {
                     ""name"": ""Walk"",
                     ""type"": ""Value"",
-                    ""id"": ""8a5bf165-cdc0-4386-a6a1-5d9b1b2515d5"",
-                    ""expectedControlType"": """",
+                    ""id"": ""0e70fafb-3762-4f2d-b031-586a4b5fbe78"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""c143f683-1a52-4510-8aa1-31243acf51cf"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""InputCheck"",
+                    ""name"": ""Check"",
                     ""type"": ""Value"",
-                    ""id"": ""5d665953-df71-49ac-aba0-07081029531e"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""id"": ""b29b609d-6d1f-4ba5-ac39-bcfd7c72bf2c"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -57,19 +48,8 @@ public partial class @FGController: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""1337a096-ac55-4bab-8421-5d15c5248227"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KBScheme"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
                     ""name"": ""2D Vector"",
-                    ""id"": ""3c4f4607-d0e2-4ded-9554-9f78936072ef"",
+                    ""id"": ""85dad4e5-85df-4937-8fe6-30c21c39d5e0"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -80,97 +60,101 @@ public partial class @FGController: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""left"",
-                    ""id"": ""e1e2c230-ccb3-49b1-aa99-0024e154a08b"",
+                    ""id"": ""00b3687d-44b4-4ac0-b9f3-729fbdd82923"",
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""KBScheme"",
+                    ""groups"": """",
                     ""action"": ""Walk"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""right"",
-                    ""id"": ""7c94298d-d3f1-40a5-8b9f-e40e56aff3c0"",
+                    ""id"": ""82802090-468d-4309-b10c-e62d6a70862e"",
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""KBScheme"",
+                    ""groups"": """",
                     ""action"": ""Walk"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""8c1dc2a7-b898-4ccb-96c2-96d8ce2a7195"",
+                    ""name"": """",
+                    ""id"": ""de4266be-b600-4374-b625-fe63224dd8c6"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Check"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Stick Vector 2"",
+                    ""id"": ""f5df3a99-8776-4a28-98c8-38acb500111f"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""InputCheck"",
+                    ""action"": ""Check"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": ""up"",
-                    ""id"": ""f6231194-dd0f-4c25-a203-10c2d7104ed4"",
+                    ""id"": ""501c5ca2-ab1f-49ff-8b2b-549e8ce6ab57"",
                     ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""KBScheme"",
-                    ""action"": ""InputCheck"",
+                    ""groups"": """",
+                    ""action"": ""Check"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""down"",
-                    ""id"": ""3fd89533-5bd2-44f5-a137-9f6d3a3671c7"",
+                    ""id"": ""b4a9f336-5f7d-46cf-9fac-f47868aabfda"",
                     ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""KBScheme"",
-                    ""action"": ""InputCheck"",
+                    ""groups"": """",
+                    ""action"": ""Check"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""left"",
-                    ""id"": ""736e9dc1-9252-4bb1-b8b0-71f2d8df7d61"",
+                    ""id"": ""555da658-e04b-4193-a2c7-8e7a08660a68"",
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""KBScheme"",
-                    ""action"": ""InputCheck"",
+                    ""groups"": """",
+                    ""action"": ""Check"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""right"",
-                    ""id"": ""b1556eec-b130-4257-bb56-9d4a8688c910"",
+                    ""id"": ""146d2211-e15d-4ea6-87d7-4e007839cd8d"",
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""KBScheme"",
-                    ""action"": ""InputCheck"",
+                    ""groups"": """",
+                    ""action"": ""Check"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
             ]
         }
     ],
-    ""controlSchemes"": [
-        {
-            ""name"": ""KBScheme"",
-            ""bindingGroup"": ""KBScheme"",
-            ""devices"": []
-        }
-    ]
+    ""controlSchemes"": []
 }");
         // FGControls
         m_FGControls = asset.FindActionMap("FGControls", throwIfNotFound: true);
         m_FGControls_Walk = m_FGControls.FindAction("Walk", throwIfNotFound: true);
-        m_FGControls_Jump = m_FGControls.FindAction("Jump", throwIfNotFound: true);
-        m_FGControls_InputCheck = m_FGControls.FindAction("InputCheck", throwIfNotFound: true);
+        m_FGControls_Check = m_FGControls.FindAction("Check", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -233,15 +217,13 @@ public partial class @FGController: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_FGControls;
     private List<IFGControlsActions> m_FGControlsActionsCallbackInterfaces = new List<IFGControlsActions>();
     private readonly InputAction m_FGControls_Walk;
-    private readonly InputAction m_FGControls_Jump;
-    private readonly InputAction m_FGControls_InputCheck;
+    private readonly InputAction m_FGControls_Check;
     public struct FGControlsActions
     {
         private @FGController m_Wrapper;
         public FGControlsActions(@FGController wrapper) { m_Wrapper = wrapper; }
         public InputAction @Walk => m_Wrapper.m_FGControls_Walk;
-        public InputAction @Jump => m_Wrapper.m_FGControls_Jump;
-        public InputAction @InputCheck => m_Wrapper.m_FGControls_InputCheck;
+        public InputAction @Check => m_Wrapper.m_FGControls_Check;
         public InputActionMap Get() { return m_Wrapper.m_FGControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -254,12 +236,9 @@ public partial class @FGController: IInputActionCollection2, IDisposable
             @Walk.started += instance.OnWalk;
             @Walk.performed += instance.OnWalk;
             @Walk.canceled += instance.OnWalk;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
-            @InputCheck.started += instance.OnInputCheck;
-            @InputCheck.performed += instance.OnInputCheck;
-            @InputCheck.canceled += instance.OnInputCheck;
+            @Check.started += instance.OnCheck;
+            @Check.performed += instance.OnCheck;
+            @Check.canceled += instance.OnCheck;
         }
 
         private void UnregisterCallbacks(IFGControlsActions instance)
@@ -267,12 +246,9 @@ public partial class @FGController: IInputActionCollection2, IDisposable
             @Walk.started -= instance.OnWalk;
             @Walk.performed -= instance.OnWalk;
             @Walk.canceled -= instance.OnWalk;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
-            @InputCheck.started -= instance.OnInputCheck;
-            @InputCheck.performed -= instance.OnInputCheck;
-            @InputCheck.canceled -= instance.OnInputCheck;
+            @Check.started -= instance.OnCheck;
+            @Check.performed -= instance.OnCheck;
+            @Check.canceled -= instance.OnCheck;
         }
 
         public void RemoveCallbacks(IFGControlsActions instance)
@@ -290,19 +266,9 @@ public partial class @FGController: IInputActionCollection2, IDisposable
         }
     }
     public FGControlsActions @FGControls => new FGControlsActions(this);
-    private int m_KBSchemeSchemeIndex = -1;
-    public InputControlScheme KBSchemeScheme
-    {
-        get
-        {
-            if (m_KBSchemeSchemeIndex == -1) m_KBSchemeSchemeIndex = asset.FindControlSchemeIndex("KBScheme");
-            return asset.controlSchemes[m_KBSchemeSchemeIndex];
-        }
-    }
     public interface IFGControlsActions
     {
         void OnWalk(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
-        void OnInputCheck(InputAction.CallbackContext context);
+        void OnCheck(InputAction.CallbackContext context);
     }
 }
