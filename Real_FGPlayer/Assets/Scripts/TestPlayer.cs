@@ -32,7 +32,8 @@ public class TestPlayer : MonoBehaviour
         PUNCH,
         KICK,
         SLASH,
-        HS
+        HS,
+        DUST
     }
 
     private void Awake()
@@ -83,6 +84,7 @@ public class TestPlayer : MonoBehaviour
 
     private InputStates InputCheck()
     {
+        //Debug.Log($" X: {controller.FGControls.Check.ReadValue<Vector2>().x} Y: {controller.FGControls.Check.ReadValue<Vector2>().y}");
         switch(controller.FGControls.Check.ReadValue<Vector2>()) 
         {
             case Vector2 v when v.Equals(new Vector2(0, 0)):
@@ -105,8 +107,20 @@ public class TestPlayer : MonoBehaviour
                 inputStates = InputStates.DOWN;
                 break;
 
-            case Vector2 v when v.Equals(new Vector2(1, 1)):
+            case Vector2 v when v.Equals(new Vector2(1, -1)):
                 inputStates = InputStates.DF;
+                break;
+            
+            case Vector2 v when v.Equals (new Vector2(-1, -1)):
+                inputStates = InputStates.DB;
+                break;
+
+            case Vector2 v when v.Equals(new Vector2(1, 1)):
+                inputStates = InputStates.UF;
+                break;
+
+            case Vector2 v when v.Equals(new Vector2 (-1, 1)):
+                inputStates = InputStates.UB;
                 break;
 
         }

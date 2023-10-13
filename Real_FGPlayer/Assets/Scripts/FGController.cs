@@ -94,7 +94,7 @@ public partial class @FGController: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Stick Vector 2"",
                     ""id"": ""f5df3a99-8776-4a28-98c8-38acb500111f"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=1)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
