@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
@@ -7,19 +8,25 @@ using UnityEngine.InputSystem.Interactions;
 [RequireComponent(typeof(Rigidbody2D))]
 public class TestPlayer : MonoBehaviour
 {
+    #region Player Variables
     private FGController controller;
     [SerializeField] CharacterSO charStats;
     private GameObject player;
     Rigidbody rb;
 
-    Vector2 input;
-    private int inputCounter;
-    private int[] inputBuffer;
+    private bool onP1Side;
+    private bool isGrounded;
+    private bool otgState;
 
+    private Vector2 input;
+    [SerializeField] private int maxBufferLength = 10;
     private InputStates inputStates;
-    
-    private enum InputStates
+    private InputStates[] inputBuffer;
+    private InputStates[] inputIterator; 
+
+    public enum InputStates
     {
+        NONE,
         NEUTRAL = 5,
         FORWARD = 6,
         BACK = 4,
@@ -28,13 +35,9 @@ public class TestPlayer : MonoBehaviour
         DF = 3,
         DB = 1,
         UF = 9,
-        UB = 7,
-        PUNCH,
-        KICK,
-        SLASH,
-        HS,
-        DUST
+        UB = 7
     }
+    #endregion
 
     private void Awake()
     {
@@ -47,7 +50,7 @@ public class TestPlayer : MonoBehaviour
 
     void Start()
     {
-
+        onP1Side = true;
         AllowAirDash();
     }
 
@@ -64,7 +67,7 @@ public class TestPlayer : MonoBehaviour
     }
 
 
-    private void AllowAirDash()
+    private void AllowAirDash() //Some characters shouldn't be allowed to do air dashes cuz that would be cheap :)
     {
         if(charStats.p_Name == "Potemkin" && charStats.p_Name == "Justice")
         {
@@ -82,9 +85,8 @@ public class TestPlayer : MonoBehaviour
 
     }
 
-    private InputStates InputCheck()
+    private InputStates InputCheck() //Checks which input is being down with either the attack buttons or the movement input keys
     {
-        //Debug.Log($" X: {controller.FGControls.Check.ReadValue<Vector2>().x} Y: {controller.FGControls.Check.ReadValue<Vector2>().y}");
         switch(controller.FGControls.Check.ReadValue<Vector2>()) 
         {
             case Vector2 v when v.Equals(new Vector2(0, 0)):
@@ -93,6 +95,7 @@ public class TestPlayer : MonoBehaviour
 
             case Vector2 v when v.Equals(new Vector2(1, 0)): 
                 inputStates = InputStates.FORWARD;
+                PushIntoBuffer(inputStates);
                 break;
 
             case Vector2 v when v.Equals(new Vector2(-1, 0)):
@@ -122,10 +125,29 @@ public class TestPlayer : MonoBehaviour
             case Vector2 v when v.Equals(new Vector2 (-1, 1)):
                 inputStates = InputStates.UB;
                 break;
-
         }
         Debug.Log(inputStates);
         return inputStates;
     }
 
+    public void PushIntoBuffer(InputStates input) //Pushes the current input that's being done into the inputBuffer array list
+    {
+        
+        for(int i = 0; i < maxBufferLength; i++) 
+        {
+            if (i == 0) //First input should be nothing
+            {
+                inputBuffer[0] = InputStates.NONE;
+            }
+
+            else //From then on
+            {
+                //What I want rn: inputBuffer is equal to the current input that's being done. 
+                inputBuffer[i] = input;
+                Debug.Log(inputBuffer[i]);
+            }
+        }
+    }
+
+    //LOAD MOVELIST FUNCTION HERE
 }

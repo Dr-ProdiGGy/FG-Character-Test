@@ -14,20 +14,19 @@ public class CharacterSO : ScriptableObject
     [SerializeField] private float charRunSpeed;
     [SerializeField] private float charRunAccel;
     [SerializeField] private string charWeight;
-    [SerializeField] private States charStates;
+    [SerializeField] private PlayerStates charStates;
 
     
 
-    private enum States 
+    private enum PlayerStates 
     {
-        WALK,
-        RUN,
-        DASH,
-        JUMP,
+        WALKING,
+        RUNNING,
+        DASHING,
+        JUMPING,
         SUPER_JUMP,
-        CROUCH,
-        ATTACK,
-        BLOCK,
+        CROUCHING,
+        BLOCKING,
         FD,
         IB
     }
@@ -42,7 +41,7 @@ public class CharacterSO : ScriptableObject
     public float p_RunSpeed { get { return charRunSpeed; }}
     public float p_RunAccel { get { return charRunAccel; }}
     public string p_Weight { get { return charWeight; }}
-    //public States p_States { get { return charStates; }}
+    //public PlayerStates p_States { get { return charStates; } set { charStates = value; } }
     #endregion
 
 
