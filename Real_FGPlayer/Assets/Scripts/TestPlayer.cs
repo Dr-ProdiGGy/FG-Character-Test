@@ -21,7 +21,9 @@ public class TestPlayer : MonoBehaviour
     private Vector2 input;
     [SerializeField] private int maxBufferLength = 10;
     private InputStates inputStates;
+    //private List<InputStates> inputBuffer;
     private InputStates[] inputBuffer;
+    
     private InputStates[] inputIterator; 
 
     public enum InputStates
@@ -41,6 +43,8 @@ public class TestPlayer : MonoBehaviour
 
     private void Awake()
     {
+        //inputBuffer = new List<InputStates>();
+        inputBuffer = new InputStates[maxBufferLength];
         controller = new FGController();
         controller.FGControls.Enable();
         rb = GetComponent<Rigidbody>();
@@ -52,10 +56,11 @@ public class TestPlayer : MonoBehaviour
     {
         onP1Side = true;
         AllowAirDash();
+        //PushIntoBuffer(inputStates);
     }
 
 
-    void FixedUpdate()
+    void Update()
     {
         PlayerMove();
         InputCheck();
@@ -95,7 +100,6 @@ public class TestPlayer : MonoBehaviour
 
             case Vector2 v when v.Equals(new Vector2(1, 0)): 
                 inputStates = InputStates.FORWARD;
-                PushIntoBuffer(inputStates);
                 break;
 
             case Vector2 v when v.Equals(new Vector2(-1, 0)):
@@ -127,15 +131,25 @@ public class TestPlayer : MonoBehaviour
                 break;
         }
         Debug.Log(inputStates);
+        PushIntoBuffer(inputStates);
         return inputStates;
     }
 
     public void PushIntoBuffer(InputStates input) //Pushes the current input that's being done into the inputBuffer array list
     {
-        
-        for(int i = 0; i < maxBufferLength; i++) 
+
+        /*inputBuffer.Add(input);
+
+        Debug.Log("inputbuffer: " + inputBuffer.Count);*/
+
+
+        for(int i = 0; i < inputBuffer.Length; i++) 
         {
-            if (i == 0) //First input should be nothing
+            //What I want rn: inputBuffer is equal to the current input that's being done. 
+            inputBuffer[i] = input;
+            Debug.Log(inputBuffer[i]);
+
+            /*if (i == 0) //First input should be nothing
             {
                 inputBuffer[0] = InputStates.NONE;
             }
@@ -145,9 +159,14 @@ public class TestPlayer : MonoBehaviour
                 //What I want rn: inputBuffer is equal to the current input that's being done. 
                 inputBuffer[i] = input;
                 Debug.Log(inputBuffer[i]);
-            }
+            }*/
         }
     }
 
     //LOAD MOVELIST FUNCTION HERE
+
+    public void LoadMovelist()
+    {
+
+    }
 }
